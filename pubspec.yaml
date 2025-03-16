@@ -54,6 +54,10 @@ dependencies:
   easy_localization: ^3.0.7+1
   # For splach screen
   flutter_native_splash: ^2.4.5
+  # For Responsive UI
+  flutter_screenutil: ^5.9.3
+  # For Rendering SVG Images
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
