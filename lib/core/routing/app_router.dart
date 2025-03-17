@@ -5,17 +5,22 @@ import 'package:flutter_complete_application/features/onboarding/ui/onboarding_s
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings settings) {
+    final arguments = settings.arguments;
+
     switch (settings.name) {
       case Routes.onboardingScreen:
-        return MaterialPageRoute(builder: (_)=> OnboardingScreen());
+        return MaterialPageRoute(builder: (_) => OnboardingScreen());
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_)=> LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       default:
-        return MaterialPageRoute(builder: (_) =>  Scaffold(
-          body: Center(
-            child: Text('No route defined for ${settings.name}'),
-          ),
-        ));
+        return MaterialPageRoute(
+          builder:
+              (_) => Scaffold(
+                body: Center(
+                  child: Text('No route defined for ${settings.name}'),
+                ),
+              ),
+        );
     }
   }
 }
