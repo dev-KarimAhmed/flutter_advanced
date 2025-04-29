@@ -1,5 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_complete_application/core/networking/api_result.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_complete_application/features/login/data/models/login_request_body.dart';
 import 'package:flutter_complete_application/features/login/data/models/login_response.dart';
 import 'package:flutter_complete_application/features/login/data/repos/login_repo.dart';
@@ -9,6 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this._loginRepo) : super(LoginState.initial());
   final LoginRepo _loginRepo;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   Future<void> login(LoginRequestBody loginRequestBody) async {
     emit(LoginState.loading());

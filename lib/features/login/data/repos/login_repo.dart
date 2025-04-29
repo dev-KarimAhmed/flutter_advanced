@@ -6,7 +6,7 @@ import 'package:flutter_complete_application/features/login/data/models/login_re
 import 'package:flutter_complete_application/features/login/data/models/login_response.dart';
 
 class LoginRepo {
-  ApiService _apiService;
+  final ApiService _apiService;
 
   LoginRepo(this._apiService);
 
