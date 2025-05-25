@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_complete_application/core/helpers/extensions.dart';
 import 'package:flutter_complete_application/core/helpers/spacing.dart';
 import 'package:flutter_complete_application/core/theme/colors_manger.dart';
 import 'package:flutter_complete_application/core/theme/font_style.dart';
 import 'package:flutter_complete_application/core/theme/font_weight.dart';
 import 'package:flutter_complete_application/core/widgets/simple_text.dart';
+import 'package:flutter_complete_application/features/sign_up/logic/cubit/signup_cubit.dart';
 import 'package:flutter_complete_application/features/sign_up/ui/widgets/register_form.dart';
+import 'package:flutter_complete_application/features/sign_up/ui/widgets/signup_bloc_listener.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignupView extends StatelessWidget {
@@ -28,7 +32,7 @@ class SignupView extends StatelessWidget {
                 ),
                 verticalSpace(36),
                 RegisterForm(),
-               
+
                 verticalSpace(32),
                 SizedBox(
                   width: double.infinity,
@@ -41,9 +45,7 @@ class SignupView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16.r),
                       ),
                     ),
-                    onPressed: () {
-                      
-                    },
+                    onPressed: () => context.read<SignupCubit>().signup(),
                     child: Text("Sign Up", style: TextStyles.font16Whitew500),
                   ),
                 ),
@@ -96,7 +98,11 @@ class SignupView extends StatelessWidget {
                         fontSize: 15.sp,
                       ),
                     ),
-                    SimplTextButton(text: "Log In", onPressed: () {}),
+                    SimplTextButton(
+                      text: "Log In",
+                      onPressed: () => context.pop(),
+                    ),
+                    SignupBlocListener(),
                   ],
                 ),
               ],
@@ -107,4 +113,3 @@ class SignupView extends StatelessWidget {
     );
   }
 }
-

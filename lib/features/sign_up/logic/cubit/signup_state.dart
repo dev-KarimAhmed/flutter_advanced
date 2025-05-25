@@ -4,9 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'signup_state.freezed.dart';
 
 @freezed
-class SignupCubitState with _$SignupCubitState {
+class SignupCubitState<T> with _$SignupCubitState<T> {
   const factory SignupCubitState.initial() = _Initial;
-  const factory SignupCubitState.loading() = _Loading;
-  const factory SignupCubitState.success(SignupResponse signupResponse) = _Success;
-  const factory SignupCubitState.error(String message) = _Error;
+  const factory SignupCubitState.loading() = Loading;
+  const factory SignupCubitState.success(SignupResponse signupResponse) = Success;
+  const factory SignupCubitState.error(String message) = Error;
 }

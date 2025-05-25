@@ -13,7 +13,7 @@ part of 'signup_state.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$SignupCubitState {
+mixin _$SignupCubitState<T> {
 
 
 
@@ -21,7 +21,7 @@ mixin _$SignupCubitState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupCubitState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupCubitState<T>);
 }
 
 
@@ -30,22 +30,22 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SignupCubitState()';
+  return 'SignupCubitState<$T>()';
 }
 
 
 }
 
 /// @nodoc
-class $SignupCubitStateCopyWith<$Res>  {
-$SignupCubitStateCopyWith(SignupCubitState _, $Res Function(SignupCubitState) __);
+class $SignupCubitStateCopyWith<T,$Res>  {
+$SignupCubitStateCopyWith(SignupCubitState<T> _, $Res Function(SignupCubitState<T>) __);
 }
 
 
 /// @nodoc
 
 
-class _Initial implements SignupCubitState {
+class _Initial<T> implements SignupCubitState<T> {
   const _Initial();
   
 
@@ -56,7 +56,7 @@ class _Initial implements SignupCubitState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial<T>);
 }
 
 
@@ -65,7 +65,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SignupCubitState.initial()';
+  return 'SignupCubitState<$T>.initial()';
 }
 
 
@@ -77,8 +77,8 @@ String toString() {
 /// @nodoc
 
 
-class _Loading implements SignupCubitState {
-  const _Loading();
+class Loading<T> implements SignupCubitState<T> {
+  const Loading();
   
 
 
@@ -88,7 +88,7 @@ class _Loading implements SignupCubitState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loading<T>);
 }
 
 
@@ -97,7 +97,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SignupCubitState.loading()';
+  return 'SignupCubitState<$T>.loading()';
 }
 
 
@@ -109,8 +109,8 @@ String toString() {
 /// @nodoc
 
 
-class _Success implements SignupCubitState {
-  const _Success(this.signupResponse);
+class Success<T> implements SignupCubitState<T> {
+  const Success(this.signupResponse);
   
 
  final  SignupResponse signupResponse;
@@ -119,13 +119,13 @@ class _Success implements SignupCubitState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(this, _$identity);
+$SuccessCopyWith<T, Success<T>> get copyWith => _$SuccessCopyWithImpl<T, Success<T>>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&(identical(other.signupResponse, signupResponse) || other.signupResponse == signupResponse));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success<T>&&(identical(other.signupResponse, signupResponse) || other.signupResponse == signupResponse));
 }
 
 
@@ -134,15 +134,15 @@ int get hashCode => Object.hash(runtimeType,signupResponse);
 
 @override
 String toString() {
-  return 'SignupCubitState.success(signupResponse: $signupResponse)';
+  return 'SignupCubitState<$T>.success(signupResponse: $signupResponse)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$SuccessCopyWith<$Res> implements $SignupCubitStateCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
+abstract mixin class $SuccessCopyWith<T,$Res> implements $SignupCubitStateCopyWith<T, $Res> {
+  factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) _then) = _$SuccessCopyWithImpl;
 @useResult
 $Res call({
  SignupResponse signupResponse
@@ -153,17 +153,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(this._self, this._then);
+class _$SuccessCopyWithImpl<T,$Res>
+    implements $SuccessCopyWith<T, $Res> {
+  _$SuccessCopyWithImpl(this._self, this._then);
 
-  final _Success _self;
-  final $Res Function(_Success) _then;
+  final Success<T> _self;
+  final $Res Function(Success<T>) _then;
 
 /// Create a copy of SignupCubitState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? signupResponse = null,}) {
-  return _then(_Success(
+  return _then(Success<T>(
 null == signupResponse ? _self.signupResponse : signupResponse // ignore: cast_nullable_to_non_nullable
 as SignupResponse,
   ));
@@ -175,8 +175,8 @@ as SignupResponse,
 /// @nodoc
 
 
-class _Error implements SignupCubitState {
-  const _Error(this.message);
+class Error<T> implements SignupCubitState<T> {
+  const Error(this.message);
   
 
  final  String message;
@@ -185,13 +185,13 @@ class _Error implements SignupCubitState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+$ErrorCopyWith<T, Error<T>> get copyWith => _$ErrorCopyWithImpl<T, Error<T>>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Error<T>&&(identical(other.message, message) || other.message == message));
 }
 
 
@@ -200,15 +200,15 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'SignupCubitState.error(message: $message)';
+  return 'SignupCubitState<$T>.error(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ErrorCopyWith<$Res> implements $SignupCubitStateCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
+abstract mixin class $ErrorCopyWith<T,$Res> implements $SignupCubitStateCopyWith<T, $Res> {
+  factory $ErrorCopyWith(Error<T> value, $Res Function(Error<T>) _then) = _$ErrorCopyWithImpl;
 @useResult
 $Res call({
  String message
@@ -219,17 +219,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(this._self, this._then);
+class _$ErrorCopyWithImpl<T,$Res>
+    implements $ErrorCopyWith<T, $Res> {
+  _$ErrorCopyWithImpl(this._self, this._then);
 
-  final _Error _self;
-  final $Res Function(_Error) _then;
+  final Error<T> _self;
+  final $Res Function(Error<T>) _then;
 
 /// Create a copy of SignupCubitState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(_Error(
+  return _then(Error<T>(
 null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
