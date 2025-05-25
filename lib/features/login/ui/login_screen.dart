@@ -5,7 +5,6 @@ import 'package:flutter_complete_application/core/theme/colors_manger.dart';
 import 'package:flutter_complete_application/core/theme/font_style.dart'
     show TextStyles;
 import 'package:flutter_complete_application/core/theme/font_weight.dart';
-import 'package:flutter_complete_application/core/widgets/simple_text.dart';
 import 'package:flutter_complete_application/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter_complete_application/features/login/ui/widgets/email_and_password.dart';
 import 'package:flutter_complete_application/features/login/ui/widgets/login_bloc_listener.dart';
@@ -132,3 +131,25 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
+class SimplTextButton extends StatelessWidget {
+  const SimplTextButton({super.key, required this.text, this.onPressed});
+  final String text;
+  final VoidCallback? onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyles.font24Black700Weight.copyWith(
+          color: ColorsManger.mainBlue,
+          fontSize: 15.sp,
+        ),
+      ),
+    );
+  }
+}
