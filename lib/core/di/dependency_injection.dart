@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_complete_application/core/networking/api_service.dart';
+import 'package:flutter_complete_application/features/sign_up/logic/cubit/signup_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/login/data/repos/login_repo.dart';
@@ -15,5 +16,9 @@ Future<void> setupGetIt() async {
 
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
-  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt()));
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
+  
+
+  // signup
+  getIt.registerFactory<SignupCubit>(() => SignupCubit());
 }

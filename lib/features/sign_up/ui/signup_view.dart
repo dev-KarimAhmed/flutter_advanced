@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_complete_application/core/helpers/extensions.dart';
 import 'package:flutter_complete_application/core/helpers/spacing.dart';
-import 'package:flutter_complete_application/core/routing/routes.dart';
 import 'package:flutter_complete_application/core/theme/colors_manger.dart';
-import 'package:flutter_complete_application/core/theme/font_style.dart'
-    show TextStyles;
+import 'package:flutter_complete_application/core/theme/font_style.dart';
 import 'package:flutter_complete_application/core/theme/font_weight.dart';
 import 'package:flutter_complete_application/core/widgets/simple_text.dart';
-import 'package:flutter_complete_application/features/login/logic/cubit/login_cubit.dart';
-import 'package:flutter_complete_application/features/login/ui/widgets/email_and_password.dart';
-import 'package:flutter_complete_application/features/login/ui/widgets/login_bloc_listener.dart';
+import 'package:flutter_complete_application/features/sign_up/ui/widgets/register_form.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../data/models/login_request_body.dart' show LoginRequestBody;
-
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignupView extends StatelessWidget {
+  const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +20,15 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Welcome Back", style: TextStyles.font32BlueBold),
+                Text("Create Account", style: TextStyles.font32BlueBold),
                 verticalSpace(8),
                 Text(
-                  "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
+                  "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!",
                   style: TextStyles.font13GreyRegular,
                 ),
                 verticalSpace(36),
-                EmailAndPassword(),
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: SimplTextButton(
-                    text: "Forgot Password?",
-                    onPressed: () {},
-                  ),
-                ),
+                RegisterForm(),
+               
                 verticalSpace(32),
                 SizedBox(
                   width: double.infinity,
@@ -56,9 +42,9 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      context.read<LoginCubit>().login();
+                      
                     },
-                    child: Text("Login", style: TextStyles.font16Whitew500),
+                    child: Text("Sign Up", style: TextStyles.font16Whitew500),
                   ),
                 ),
                 verticalSpace(36),
@@ -104,16 +90,15 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?",
+                      "Already have an account?",
                       style: TextStyles.font13GreyRegular.copyWith(
                         color: Colors.black,
                         fontSize: 15.sp,
                       ),
                     ),
-                    SimplTextButton(text: "Sign Up", onPressed: ()=> context.pushNamed(Routes.signupScreen)),
+                    SimplTextButton(text: "Log In", onPressed: () {}),
                   ],
                 ),
-                LoginBlocListener(),
               ],
             ),
           ),
@@ -122,3 +107,4 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
