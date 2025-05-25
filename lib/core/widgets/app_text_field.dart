@@ -13,15 +13,20 @@ class AppTextField extends StatelessWidget {
     this.keyboardType,
     this.obscureText = false,
     this.suffixIcon,
+   required this.validator,
   });
   final TextEditingController controller;
   final String hintText;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final bool obscureText;
+  final String? Function(String?) validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: (value) {
+        return validator(value);
+      },
       obscureText: obscureText,
       keyboardType: keyboardType,
       controller: controller,
@@ -42,6 +47,14 @@ class AppTextField extends StatelessWidget {
           borderSide: BorderSide(color: ColorsManger.lighterGrey, width: 1.3),
         ),
         focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.r),
+          borderSide: BorderSide(color: ColorsManger.grey),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.r),
+          borderSide: BorderSide(color: ColorsManger.grey),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
           borderSide: BorderSide(color: ColorsManger.grey),
         ),
