@@ -14,6 +14,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  late TextEditingController _nameController;
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
   late TextEditingController _passwordConfirmation;
@@ -27,9 +28,11 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   void initState() {
+    _nameController = context.read<SignupCubit>().nameController;
     _emailController = context.read<SignupCubit>().emailController;
     _passwordController = context.read<SignupCubit>().passwordController;
-    _passwordConfirmation = context.read<SignupCubit>().passwordConfirmController;
+    _passwordConfirmation =
+        context.read<SignupCubit>().passwordConfirmController;
     _phoneController = context.read<SignupCubit>().phoneController;
     setupPasswordControllersListeners();
     super.initState();
@@ -45,7 +48,6 @@ class _RegisterFormState extends State<RegisterForm> {
         hasNumber = AppRegex.hasNumber(_passwordController.text);
         isValidLength = AppRegex.hasMinLength(_passwordController.text);
         hasLowercase = AppRegex.hasLowerCase(_passwordController.text);
-        
       });
     });
   }
@@ -56,6 +58,19 @@ class _RegisterFormState extends State<RegisterForm> {
       key: context.read<SignupCubit>().formKey,
       child: Column(
         children: [
+          AppTextField(
+            hintText: "name",
+            controller: _nameController,
+            keyboardType: TextInputType.name,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          ),
+          verticalSpace(12),
+
           AppTextField(
             hintText: "Email",
             controller: _emailController,
@@ -69,7 +84,7 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
           ),
-          verticalSpace(16),
+          verticalSpace(12),
           AppTextField(
             hintText: "Phone number",
             controller: _phoneController,
@@ -83,20 +98,22 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
           ),
-          verticalSpace(16),
+          verticalSpace(12),
           AppTextField(
             hintText: "Password",
             controller: _passwordController,
             keyboardType: TextInputType.visiblePassword,
             obscureText: true,
             validator: (value) {
-              if (value == null || value.isEmpty || !AppRegex.isPasswordValid(value)) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isPasswordValid(value)) {
                 return 'Please enter some text';
               }
               return null;
             },
           ),
-          verticalSpace(16),
+          verticalSpace(12),
           AppTextField(
             hintText: "Password Confirmation",
             controller: _passwordConfirmation,
@@ -112,7 +129,7 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
           ),
-          verticalSpace(16),
+          verticalSpace(12),
           PasswordValidations(
             hasSpecialCharacters: hasSpecialCharacters,
             hasUppercase: hasUppercase,
