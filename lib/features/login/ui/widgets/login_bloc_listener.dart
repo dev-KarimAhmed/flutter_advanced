@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_complete_application/core/functions/build_custom_loading.dart';
 import 'package:flutter_complete_application/core/helpers/extensions.dart';
 import 'package:flutter_complete_application/core/routing/routes.dart';
 import 'package:flutter_complete_application/core/theme/colors_manger.dart';
@@ -20,17 +21,8 @@ class LoginBlocListener extends StatelessWidget {
       listener: (context, state) {
         switch (state) {
           case Loading():
-            showDialog(
-              context: context,
-              builder:
-                  (_) => const Center(
-                    child: CircularProgressIndicator(
-                      color: ColorsManger.mainBlue,
-                    ),
-                  ),
-            );
+            buildCustomLoading(context);
           case Error():
-            Navigator.pop(context);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text((state).error),
@@ -40,12 +32,13 @@ class LoginBlocListener extends StatelessWidget {
           case Success():
             Success success = state;
             LoginResponse loginResponse = success.data as LoginResponse;
-            Navigator.pop(context);
-            context.pushNamed(Routes.homeScreen);
+            context.pushReplacmentNamed(Routes.homeScreen , arguments: loginResponse);
             break;
         }
       },
       child: const SizedBox.shrink(),
     );
   }
+
+
 }
