@@ -5,6 +5,7 @@ import 'package:flutter_complete_application/core/theme/colors_manger.dart';
 import 'package:flutter_complete_application/core/theme/font_style.dart'
     show TextStyles;
 import 'package:flutter_complete_application/core/theme/font_weight.dart';
+import 'package:flutter_complete_application/core/widgets/simple_text.dart';
 import 'package:flutter_complete_application/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter_complete_application/features/login/ui/widgets/email_and_password.dart';
 import 'package:flutter_complete_application/features/login/ui/widgets/login_bloc_listener.dart';
@@ -101,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account yet?",
+                      "Don't have an account?",
                       style: TextStyles.font13GreyRegular.copyWith(
                         color: Colors.black,
                         fontSize: 15.sp,
@@ -131,25 +132,3 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class SimplTextButton extends StatelessWidget {
-  const SimplTextButton({super.key, this.onPressed, required this.text});
-  final VoidCallback? onPressed;
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        overlayColor: ColorsManger.mainBlue,
-      ),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyles.font32BlueBold.copyWith(
-          fontWeight: FontWeightHelper.regular,
-          fontSize: 16.sp,
-        ),
-      ),
-    );
-  }
-}
