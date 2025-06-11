@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_application/core/helpers/spacing.dart';
-import 'package:flutter_complete_application/features/home/widgets/doctor_blue_container.dart';
-import 'package:flutter_complete_application/features/home/widgets/doctor_list_view.dart';
-import 'package:flutter_complete_application/features/home/widgets/doctor_speciality_list.dart';
-import 'package:flutter_complete_application/features/home/widgets/home_top_bar.dart';
-import 'package:flutter_complete_application/features/home/widgets/social_speciality_seeall.dart';
+import 'package:flutter_complete_application/features/home/ui/widgets/doctor_blue_container.dart';
+import 'package:flutter_complete_application/features/home/ui/widgets/doctor_list_view.dart';
+import 'package:flutter_complete_application/features/home/ui/widgets/doctor_speciality_list.dart';
+import 'package:flutter_complete_application/features/home/ui/widgets/home_top_bar.dart';
+import 'package:flutter_complete_application/features/home/ui/widgets/social_speciality_seeall.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 

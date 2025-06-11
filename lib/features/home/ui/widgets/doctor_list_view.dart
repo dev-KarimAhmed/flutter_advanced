@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_complete_application/core/theme/font_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helpers/spacing.dart';
+import '../../../../../core/helpers/spacing.dart';
 
 class DoctorsListView extends StatelessWidget {
   const DoctorsListView({super.key});
