@@ -30,13 +30,13 @@ class HomeTopBar extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        CircleAvatar(
-          radius: 24.0,
-          backgroundColor: ColorsManger.lighterGrey,
-          child: SvgPicture.asset(
-            'assets/svgs/notifications.svg',
-          ),
-        )
+        // CircleAvatar(
+        //   radius: 24.0,
+        //   backgroundColor: ColorsManger.lighterGrey,
+        //   child: SvgPicture.asset(
+        //     'assets/svgs/notifications.svg',
+        //   ),
+        // )
       ],
     );
   }

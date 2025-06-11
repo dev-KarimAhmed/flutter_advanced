@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_complete_application/core/di/dependency_injection.dart';
 import 'package:flutter_complete_application/core/routing/routes.dart';
+import 'package:flutter_complete_application/features/home/logic/cubit/home_cubit.dart';
 import 'package:flutter_complete_application/features/home/ui/views/home_screen.dart';
 import 'package:flutter_complete_application/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter_complete_application/features/login/ui/login_screen.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_complete_application/features/sign_up/logic/cubit/signup
 import 'package:flutter_complete_application/features/sign_up/ui/signup_view.dart';
 
 class AppRouter {
-  Route onGenerateRoute(RouteSettings settings) {
+  Route? onGenerateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
 
     switch (settings.name) {
@@ -35,17 +36,13 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder:
-              (_) => HomeScreen(),
-        );
-      default:
-        return MaterialPageRoute(
-          builder:
-              (_) => Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${settings.name}'),
-                ),
+              (_) => BlocProvider(
+                create: (context) => HomeCubit(getIt())..getAllSpecialization(),
+                child: HomeScreen(),
               ),
         );
+      default:
+        return null;
     }
   }
 }
