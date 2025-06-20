@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_complete_application/core/functions/build_custom_loading.dart';
 import 'package:flutter_complete_application/core/helpers/extensions.dart';
 import 'package:flutter_complete_application/core/routing/routes.dart';
-import 'package:flutter_complete_application/core/theme/colors_manger.dart';
 import 'package:flutter_complete_application/features/login/data/models/login_response.dart';
 import 'package:flutter_complete_application/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter_complete_application/features/login/logic/cubit/login_state.dart';

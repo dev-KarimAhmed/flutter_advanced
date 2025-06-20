@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_application/core/theme/colors_manger.dart';
 import 'package:flutter_complete_application/core/theme/font_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 
 class HomeTopBar extends StatelessWidget {
