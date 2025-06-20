@@ -13,7 +13,6 @@ import 'package:flutter_complete_application/features/login/ui/widgets/email_and
 import 'package:flutter_complete_application/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../data/models/login_request_body.dart' show LoginRequestBody;
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
