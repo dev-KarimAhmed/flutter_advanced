@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_application/core/networking/api_constants.dart';
 import 'package:flutter_complete_application/core/routing/app_router.dart';
 import 'package:flutter_complete_application/core/routing/routes.dart';
 import 'package:flutter_complete_application/core/theme/colors_manger.dart';
@@ -21,7 +22,7 @@ class DocApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouter.onGenerateRoute,
-        initialRoute: Routes.homeScreen,
+        initialRoute: isLogin ? Routes.homeScreen : Routes.loginScreen,
         title: "Doc App",
       ),
     );

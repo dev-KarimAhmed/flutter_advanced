@@ -43,7 +43,7 @@ class DioFactory {
     );
   }
 
-  static void setDioHeaders(String token) {
+  static void setDioHeadersAfterLogin(String token) {
     {
       dio?.options.headers = {'Authorization': "Bearer $token"};
     }

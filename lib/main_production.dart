@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   // to fix hidden text bug in screenutil package
   await ScreenUtil.ensureScreenSize();
+  await SharedPref.preferences.instantiatePreferences();
   checkIfUserIsLoggedIn();
   // just an example to test flavors
   setupGetIt();

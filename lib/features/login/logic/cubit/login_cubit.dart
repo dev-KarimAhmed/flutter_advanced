@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_complete_application/core/networking/dio_factory.dart';
 import 'package:flutter_complete_application/core/services/pref_keys.dart';
 import 'package:flutter_complete_application/core/services/shared_prefs.dart';
 import 'package:flutter_complete_application/features/login/data/models/login_request_body.dart';
@@ -32,5 +33,6 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> saveToken(String token) async {
     await SharedPref.preferences.setString(SharedPrefKeys.userToken, token);
+    DioFactory.setDioHeadersAfterLogin(token);
   }
 }
