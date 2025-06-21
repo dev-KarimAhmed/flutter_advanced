@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
@@ -108,5 +108,17 @@ class SharedPref {
     log('Clearing all SharedPreferences');
     await sharedPreferences.clear();
     log('All SharedPreferences cleared');
+  }
+
+  Future<void> setSecureString(String key, String value) async {
+   const  flutterSecureStorage = FlutterSecureStorage();
+    await flutterSecureStorage.write(key: key, value: value);
+    log('String value set: $value for key: $key');
+  }
+
+  Future<String?> getSecureString(String key) async {
+    const flutterSecureStorage = FlutterSecureStorage();
+      log('Getting string value for key: $key');
+    return await flutterSecureStorage.read(key: key) ?? '';
   }
 }

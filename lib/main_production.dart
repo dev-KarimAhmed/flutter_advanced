@@ -8,23 +8,27 @@ import 'package:flutter_complete_application/core/services/shared_prefs.dart';
 import 'package:flutter_complete_application/doc_app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
-void main() async {
+Future<void> main() async {
   // to fix hidden text bug in screenutil package
-  await ScreenUtil.ensureScreenSize();
-  await SharedPref.preferences.instantiatePreferences();
-  checkIfUserIsLoggedIn();
+
+  WidgetsFlutterBinding.ensureInitialized();
+   Future.wait([
+    ScreenUtil.ensureScreenSize(),
+    SharedPref.preferences.instantiatePreferences(),
+    checkIfUserIsLoggedIn(),
+  ]);
   // just an example to test flavors
   setupGetIt();
   runApp(DocApp(appRouter: AppRouter()));
 }
-checkIfUserIsLoggedIn() {
-  String? token = SharedPref.preferences.getString(SharedPrefKeys.userToken);
+
+Future<void> checkIfUserIsLoggedIn() async {
+  String? token = await SharedPref.preferences.getSecureString(
+    SharedPrefKeys.userToken,
+  );
   if (!token.isNullOrEmpty) {
     isLogin = true;
-    
-  }else{
+  } else {
     isLogin = false;
   }
 }
