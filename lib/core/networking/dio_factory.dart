@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_complete_application/core/services/pref_keys.dart';
+import 'package:flutter_complete_application/core/services/shared_prefs.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -28,7 +30,7 @@ class DioFactory {
       'Accept': 'application/json',
 
       'Authorization':
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZjYXJlLmludGVncmF0aW9uMjUuY29tL2FwaS9hdXRoL3JlZ2lzdGVyIiwiaWF0IjoxNzQ5NjczNTI2LCJleHAiOjE3NDk3NTk5MjYsIm5iZiI6MTc0OTY3MzUyNiwianRpIjoiQjlsamdwZjc2VlhXb0NzOSIsInN1YiI6IjQwODkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.nyOB4HafoCVEILkwsMtazjeZ970mH4dkjNY2hXG9_fc",
+          "Bearer ${SharedPref.preferences.getString(SharedPrefKeys.userToken)}",
     };
   }
 
@@ -40,5 +42,11 @@ class DioFactory {
         responseHeader: true,
       ),
     );
+  }
+
+  static void setDioHeaders(String token) {
+    {
+      dio?.options.headers = {'Authorization': "Bearer $token"};
+    }
   }
 }
