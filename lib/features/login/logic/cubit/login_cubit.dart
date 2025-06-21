@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_complete_application/core/services/pref_keys.dart';
+import 'package:flutter_complete_application/core/services/shared_prefs.dart';
 import 'package:flutter_complete_application/features/login/data/models/login_request_body.dart';
 import 'package:flutter_complete_application/features/login/data/repos/login_repo.dart';
 import 'package:flutter_complete_application/features/login/logic/cubit/login_state.dart';
@@ -22,6 +24,13 @@ class LoginCubit extends Cubit<LoginState> {
 
     response.fold((failure) {
       emit(LoginState.error(error: failure.errMessage));
-    }, (response) => emit(LoginState.success(response)));
+    }, (response) async{
+      await saveToken(response.userData?.token ?? '');
+      emit(LoginState.success(response));
+    });
+  }
+
+  Future<void> saveToken(String token) async {
+    await SharedPref.preferences.setString(SharedPrefKeys.userToken, token);
   }
 }

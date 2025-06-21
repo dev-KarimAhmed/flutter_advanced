@@ -4,10 +4,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
   factory SharedPref() {
+    log('SharedPref factory called');
     return preferences;
   }
 
-  SharedPref._internal();
+  SharedPref._internal() {
+    log('SharedPref internal constructor called');
+  }
   static final SharedPref preferences = SharedPref._internal();
 
   static late SharedPreferences sharedPreferences;
