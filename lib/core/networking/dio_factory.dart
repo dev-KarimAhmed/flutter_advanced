@@ -28,7 +28,6 @@ class DioFactory {
   static void addDioHeaders() {
     dio?.options.headers = {
       'Accept': 'application/json',
-
       'Authorization':
           "Bearer ${SharedPref.preferences.getString(SharedPrefKeys.userToken)}",
     };
